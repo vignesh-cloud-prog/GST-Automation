@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product-upload</title>
+    <link rel="stylesheet" href="{%static 'all.css'%}" />
+
+</head>
+
+<body>
+    <h1>Product upload</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="head">
+
+            <h2>Product Information</h2>
+        </div>
+        <label for="product_name">Product name<input type="text" name="product_name"></label>
+        <label for="selling_price">Selling price<input type="number" name="selling_price" id="selling_price"></label>
+        <label>Product Description: <textarea type="text" id="desc" name="product_desc"></textarea></label>
+
+        <div id="selected_gst">
+
+            <div class="head">
+                <h2> GST Information</h2>
+                <button class="btn" type="button" onclick="edit_gst()">search</button>
+            </div>
+            <label>code: <input type="text" id="code" name="code" value="{{request.user.gst.hsn}}"></label>
+            <label>desc: <textarea type="text" id="desc" name="desc">{{request.user.gst.desc}}</textarea></label>
+            <label>cgst: <input type="text" id="cgst" name="cgst" value="{{request.user.gst.cgst}}"></label>
+            <label>sgst: <input type="text" id="sgst" name="sgst" value="{{request.user.gst.sgst}}"></label>
+            <label>igst: <input type="text" id="igst" name="igst" value="{{request.user.gst.igst}}"></label>
+            <label>cess: <input type="text" id="cess" name="cess" value="{{request.user.gst.cess}}"></label>
+
+        </div>
+        <button type="submit" class="btn">Upload</button>
+    </form>
+    <div id="set_gst" style="display: none;">
+
+        {% include 'getgst.html' %}
+    </div>
+    <script src="{% static 'all.js' %}"></script>
+
+</body>
+
+</html>

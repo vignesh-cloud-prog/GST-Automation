@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Profile</title>
+    <link rel="stylesheet" href="{%static 'all.css'%}" />
+</head>
+
+<body>
+
+    {% if request.user.gst %}
+    <div class="card" id="vendor_gst">
+        <div class="head">
+
+            <h1>GST Information</h1>
+            <button onclick="edit_gst()" class="btn" type="submit">Edit</button>
+        </div>
+        <div class="info">
+            <div class="code">
+                <b>code:</b>
+                <p> {{request.user.gst.hsn}}</p>
+            </div>
+            <div class="desc">
+                <b>desccription:</b>
+                <p> {{request.user.gst.desc}}</p>
+            </div>
+        </div>
+        <div class="gst">
+            <div class="cgst">
+                <b>CGST:</b>
+                <p> {{request.user.gst.cgst}}</p>
+            </div>
+            <div class="sgst">
+                <b>SGST:</b>
+                <p>{{request.user.gst.sgst}}</p>
+            </div>
+            <div class="igst">
+                <b>IGST:</b>
+                <p>{{request.user.gst.igst}}</p>
+            </div>
+            <div class="cess">
+                <b>Cess:</b>
+                <p>{{request.user.gst.cess}}</p>
+            </div>
+        </div>
+
+    </div>
+
+
+    {% else %}
+    You haven't set GST! <button class="btn" onclick="edit_gst()"> Set-GST now </button>
+    {% endif %}
+    <div id="set_gst" style="display: none;">
+
+        {% include 'getgst.html' %}
+        <form action="/update-profile-gst" method="post">
+            {% csrf_token %}
+            <div id="selected_gst" class="selected_gst" style="display: none;">
+
+                <div class="head">
+                    <h1> Set GST </h1>
+                    <button class="btn" type="submit">save</button>
+                </div>
+                <label>code: <input type="text" id="code" name="code" value="{{request.user.gst.hsn}}"></label>
+                <label>desc: <textarea type="text" id="desc" name="desc">{{request.user.gst.desc}}</textarea></label>
+                <label>cgst: <input type="text" id="cgst" name="cgst" value="{{request.user.gst.cgst}}"></label>
+                <label>sgst: <input type="text" id="sgst" name="sgst" value="{{request.user.gst.sgst}}"></label>
+                <label>igst: <input type="text" id="igst" name="igst" value="{{request.user.gst.igst}}"></label>
+                <label>cess: <input type="text" id="cess" name="cess" value="{{request.user.gst.cess}}"></label>
+
+            </div>
+        </form>
+
+    </div>
+    <script src="{% static 'all.js' %}"></script>
+</body>
+
+</html>

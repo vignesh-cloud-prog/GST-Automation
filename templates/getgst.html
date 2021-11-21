@@ -1,0 +1,22 @@
+{% load static %}
+<link rel="stylesheet" href="{%static 'all.css'%}" />
+<link rel="stylesheet" href="{%static 'getgst.css'%}" />
+
+<h1> GST Finder</h1>
+<div class="gst_form">
+
+<label for="input_product_data">
+    <input required aria-required="true" type="text" id="input_product_data" placeholder="Enter your query"  onsubmit="get_filtered_gst_data()">
+    <p> <b>Guideline: </b> Search for 
+        Chapter / Heading / Sub-heading / Tariff item / Description of Goods</p>
+</label>
+<button type="button" class="btn" onclick="get_filtered_gst_data()">search</button>
+</div>
+
+<div id="filtered_data" style="display: none;">
+<h1>Related GST</h1>
+<p> <b>Disclaimer: </b> These data are taken from https://cbic-gst.gov.in/gst-goods-services-rates.html. You can verify it with any other source, this is just to help you easily find GST rates. </p>
+<div id="options" >
+</div>
+</div>
+<script src="{% static 'getgst.js' %}"></script>

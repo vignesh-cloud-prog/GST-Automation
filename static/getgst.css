@@ -1,0 +1,34 @@
+
+/* CSS */
+
+/* Slide button styling */
+.slide {
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 30px 13px;
+    outline: 0;
+    border: 1px solid black;
+    cursor: pointer;
+    position: relative;
+    background-color: #66f2d5;
+  }
+  
+  
+  .slide div {
+    transition: transform 0.8s;
+    text-align: center;
+  }
+  
+  .slide:hover div {
+    transform: translateX(-6px);
+  }
+  
+  
+  .slide:hover i {
+    opacity: 1;
+    transform: translateX(-6px);
+  }
+  /* End of Slide Button  */
+  

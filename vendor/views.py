@@ -3,10 +3,17 @@ from .models import GST
 
 
 # Create your views here.
+
 def vendor_profile(request):
-    return render(request,'vendor_profile.html')
+    if request.user.is_superuser:
+        return render(request,'vendor_profile.html')
+    else :
+        return redirect('admin:index')
 
 def update_gst(request):
+    if not request.user.is_superuser:
+        return redirect('admin:index')
+        
     if request.method == "POST":
         code = request.POST.get('code')
         desc = request.POST.get('desc')
@@ -14,13 +21,7 @@ def update_gst(request):
         sgst = request.POST.get('sgst')
         igst = request.POST.get('igst')
         cess = request.POST.get('cess')
-        # obj=GST.objects.get(user=request.user)
-        # if obj:
-        #     obj.update(hsn=code,desc=desc,cgst=cgst,sgst=sgst,igst=igst,cess=cess)
-        # else:
-        #     obj = GST.objects.create(user=request.user,hsn=code,desc=desc,cgst=cgst,sgst=sgst,igst=igst,cess=cess)
-        #     obj.save()
-
+    
         try:
             obj=GST.objects.get(user=request.user)
             obj.hsn=code
@@ -36,7 +37,5 @@ def update_gst(request):
             obj.save()
             print("saved")
         print(code,desc,sgst,cgst,igst,cess)
-    #    GST.objects.filter(user=request.user).update(hsn=code,desc=desc,cgst=cgst,sgst=sgst,igst=igst,cess=cess)
-
 
     return redirect('vendor_profile')

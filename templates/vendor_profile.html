@@ -57,25 +57,27 @@
     <div id="set_gst" style="display: none;">
 
         {% include 'getgst.html' %}
-        <form action="/update-profile-gst" method="post">
-            {% csrf_token %}
-            <div id="selected_gst" class="selected_gst" style="display: none;">
-
-                <div class="head">
-                    <h1> Set GST </h1>
-                    <button class="btn" type="submit">save</button>
-                </div>
-                <label>code: <input type="text" id="code" name="code" value="{{request.user.gst.hsn}}"></label>
-                <label>desc: <textarea type="text" id="desc" name="desc">{{request.user.gst.desc}}</textarea></label>
-                <label>cgst: <input type="text" id="cgst" name="cgst" value="{{request.user.gst.cgst}}"></label>
-                <label>sgst: <input type="text" id="sgst" name="sgst" value="{{request.user.gst.sgst}}"></label>
-                <label>igst: <input type="text" id="igst" name="igst" value="{{request.user.gst.igst}}"></label>
-                <label>cess: <input type="text" id="cess" name="cess" value="{{request.user.gst.cess}}"></label>
-
-            </div>
-        </form>
+        
 
     </div>
+    <form action="/update-profile-gst" method="post">
+        {% csrf_token %}
+        <div id="selected_gst" class="selected_gst" style="display: none;">
+
+            <div class="head">
+                <h1> Set GST </h1>
+                <button class="btn" type="submit">save</button>
+            </div>
+            <div class="form">
+            <label>code: <input type="text" id="code" name="code" value="{{request.user.gst.hsn}}"></label>
+            <label>desc: <textarea type="text" id="desc" name="desc">{{request.user.gst.desc}}</textarea></label>
+            <label>cgst: <input type="text" id="cgst" name="cgst" value="{{request.user.gst.cgst}}"></label>
+            <label>sgst: <input type="text" id="sgst" name="sgst" value="{{request.user.gst.sgst}}"></label>
+            <label>igst: <input type="text" id="igst" name="igst" value="{{request.user.gst.igst}}"></label>
+            <label>cess: <input type="text" id="cess" name="cess" value="{{request.user.gst.cess}}"></label>
+        </div>
+        </div>
+    </form>
     <script src="{% static 'all.js' %}"></script>
 </body>
 

@@ -19,25 +19,31 @@
 
             <h2>Product Information</h2>
         </div>
-        <label for="product_name">Product name<input type="text" name="product_name"></label>
-        <label for="selling_price">Selling price<input type="number" name="selling_price" id="selling_price"></label>
-        <label>Product Description: <textarea type="text" id="desc" name="product_desc"></textarea></label>
-
+        <div class="form">
+            <label for="product_name">Product name<input type="text" name="product_name"></label>
+            <label for="selling_price">Selling price<input type="number" name="selling_price"
+                    id="selling_price"></label>
+            <label>Product Description: <textarea type="text" id="prod_desc" name="product_desc"></textarea></label>
+        </div>
         <div id="selected_gst">
 
             <div class="head">
                 <h2> GST Information</h2>
                 <button class="btn" type="button" onclick="edit_gst()">search</button>
             </div>
-            <label>code: <input type="text" id="code" name="code" value="{{request.user.gst.hsn}}"></label>
-            <label>desc: <textarea type="text" id="desc" name="desc">{{request.user.gst.desc}}</textarea></label>
-            <label>cgst: <input type="text" id="cgst" name="cgst" value="{{request.user.gst.cgst}}"></label>
-            <label>sgst: <input type="text" id="sgst" name="sgst" value="{{request.user.gst.sgst}}"></label>
-            <label>igst: <input type="text" id="igst" name="igst" value="{{request.user.gst.igst}}"></label>
-            <label>cess: <input type="text" id="cess" name="cess" value="{{request.user.gst.cess}}"></label>
-
+            <div class="form">
+                <label>code: <input type="text" id="code" name="code" value="{{request.user.gst.hsn}}"></label>
+                <label>desc: <textarea type="text" id="desc" name="desc">{{request.user.gst.desc}}</textarea></label>
+                <label>cgst: <input type="text" id="cgst" name="cgst" value="{{request.user.gst.cgst}}"></label>
+                <label>sgst: <input type="text" id="sgst" name="sgst" value="{{request.user.gst.sgst}}"></label>
+                <label>igst: <input type="text" id="igst" name="igst" value="{{request.user.gst.igst}}"></label>
+                <label>cess: <input type="text" id="cess" name="cess" value="{{request.user.gst.cess}}"></label>
+            </div>
         </div>
-        <button type="submit" class="btn">Upload</button>
+        <center>
+
+            <button type="submit" class="btn">Upload</button>
+        </center>
     </form>
     <div id="set_gst" style="display: none;">
 

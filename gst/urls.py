@@ -24,7 +24,7 @@ from vendor.views import vendor_profile,update_gst
 urlpatterns = [
     path('product-upload', product_upload,name='product_upload'),
     path('vendor-profile', vendor_profile, name='vendor_profile'),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls,name='admin'),
     path('filter_gst/<str:query>',gst_search , name='filter_first_option'),
     path('update-profile-gst',update_gst , name='update_profile_gst'),
     path('', index, name='index'),

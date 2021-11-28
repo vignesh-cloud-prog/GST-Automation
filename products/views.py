@@ -1,8 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Product
 
+
 # Create your views here.
+
 def product_upload(request):
+    if not request.user.is_superuser:
+        return redirect('admin:index')
     if request.method == "POST":
         product_name = request.POST.get('product_name')
         selling_price = request.POST.get('selling_price')

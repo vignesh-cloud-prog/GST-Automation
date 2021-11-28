@@ -6,7 +6,7 @@ from django.db.models import Q
 
 import requests
 from bs4 import BeautifulSoup
-import pandas as pd
+
 
 # Create your views here.
 def get_gst_page():
